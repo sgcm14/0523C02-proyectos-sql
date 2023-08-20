@@ -64,3 +64,57 @@ LIMIT 3;
 
 /*5. Obtener el listado de todos los actores. Quitar las columnas de fechas y película favorita, además traducir los nombres de las columnas.*/
 SELECT first_name AS nombre, last_name AS apellido, rating AS clasificación FROM actors;
+
+/*Funciones de agregación, GROUP BY y HAVING*/
+/*1. ¿Cuántas películas hay?*/
+SELECT COUNT(title) FROM movies;
+
+/*2. ¿Cuántas películas tienen entre 3 y 7 premios?*/
+SELECT COUNT(*) FROM movies
+WHERE awards BETWEEN 3 AND 7;
+
+/*3. ¿Cuántas películas tienen entre 3 y 7 premios y un rating mayor a 7?*/
+SELECT COUNT(*) FROM movies
+WHERE (awards BETWEEN 3 AND 7) AND rating>7;
+
+/*4. Crear un listado a partir de la tabla de películas, mostrar un reporte de la
+cantidad de películas por id. de género.*/
+SELECT genre_id, COUNT(genre_id) FROM movies
+GROUP BY genre_id;
+
+/*5. De la consulta anterior, listar sólo aquellos géneros que tengan como suma
+de premios un número mayor a 5.*/
+SELECT genre_id, COUNT(genre_id)
+FROM movies
+GROUP BY genre_id
+HAVING SUM(awards) > 5;
+
+/*Join
+1. Utilizando la base de datos de movies, queremos conocer, por un lado, los
+títulos y el nombre del género de todas las series de la base de datos.*/
+SELECT title, name 
+FROM series
+INNER JOIN genres ON genre_id = genres.id;
+
+/*2. Por otro, necesitamos listar los títulos de los episodios junto con el nombre y
+apellido de los actores que trabajan en cada uno de ellos.*/
+SELECT episodes.title, actors.first_name, actors.last_name
+FROM episodes
+INNER JOIN actor_episode ON episodes.id = actor_episode.episode_id
+INNER JOIN actors ON actor_episode.actor_id = actors.id;
+
+/*3. Para nuestro próximo desafío, necesitamos obtener a todos los actores o
+actrices (mostrar nombre y apellido) que han trabajado en cualquier película
+de la saga de La Guerra de las galaxias.*/
+SELECT movies.title, actors.first_name, actors.last_name
+FROM movies
+INNER JOIN actor_movie ON movies.id = actor_movie.movie_id
+INNER JOIN actors ON actor_movie.actor_id = actors.id
+WHERE movies.title LIKE 'La Guerra de las galaxias%';
+
+/*4. Crear un listado a partir de la tabla de películas, mostrar un reporte de la
+cantidad de películas por nombre de género.*/
+SELECT genres.name,COUNT(movies.genre_id) AS cantidad
+FROM movies
+INNER JOIN genres ON genre_id = genres.id
+GROUP BY genres.name;
