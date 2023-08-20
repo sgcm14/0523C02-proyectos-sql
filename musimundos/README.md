@@ -18,6 +18,8 @@ Instalación paso a paso:
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/musimundos/musimundos.png)
+
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
 <img src ="https://raw.githubusercontent.com/sgcm14/sgcm14/main/sammy.jpg" width="200">

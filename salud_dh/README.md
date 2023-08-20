@@ -22,6 +22,7 @@ Una vez creado el modelo, vamos a utilizar forward engineering para generar el s
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/salud_dh/salud_dh.png)
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 

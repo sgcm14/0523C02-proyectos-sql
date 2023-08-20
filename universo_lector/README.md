@@ -32,6 +32,8 @@ Cada préstamo es identificado por un código único y puede incluir uno o más 
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/universo_lector/universo_lector.png)
+
 -------------------
 **Manipulando datos:**
 

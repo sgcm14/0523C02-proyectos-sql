@@ -49,6 +49,8 @@ opción de la base de datos.
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/checkpoint1/checkpoint_db.png)
+
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 

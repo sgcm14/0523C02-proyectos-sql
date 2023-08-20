@@ -38,6 +38,7 @@ Antes de arrancar con el modelado, ¿leemos lo que nos explica la empresa respec
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/dhTube/dhTube.png)
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 

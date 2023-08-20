@@ -94,6 +94,7 @@ que el modelo relacional es el correcto.
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/playground/playground.png)
 
 -----------------------
 **Insertar datos:**

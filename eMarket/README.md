@@ -35,6 +35,8 @@ Existen 13 tablas:
 
 El Diagrama entidad relación es como se muestra a continuación:
 
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/eMarket/eMarket.png)
+
 -----------------
 
 **Consultas queries ML - Parte I**
