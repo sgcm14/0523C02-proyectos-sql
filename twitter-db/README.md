@@ -7,7 +7,7 @@ Se crea la BD con scripts directamente.
 
 El Diagrama entidad relación es como se muestra a continuación:
 
-![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/twitter-db/twitter-db.png)
+![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/twitter-db/twitter_db.png)
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
