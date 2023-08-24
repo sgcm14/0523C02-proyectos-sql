@@ -153,14 +153,14 @@ Tips:
 
 En esta segunda parte vamos a intensificar la práctica de consultas con JOIN.
 
-1) Generar un listado de todas las facturas del empleado 'Buchanan'.
-2) Generar un listado con todos los campos de las facturas del correo 'Speedy Express'.
-3) Generar un listado de todas las facturas con el nombre y apellido de los empleados.
-4) Mostrar un listado de las facturas de todos los clientes “Owner” y país de envío “USA”.
-5) Mostrar todos los campos de las facturas del empleado cuyo apellido sea “Leverling” o que incluyan el producto id = “42”.
-6) Mostrar todos los campos de las facturas del empleado cuyo apellido sea “Leverling” y que incluya los producto id = “80” o ”42”.
-7) Generar un listado con los cinco mejores clientes, según sus importes de compras total (PrecioUnitario * Cantidad).
-8) Generar un listado de facturas, con los campos id, nombre y apellido del cliente, fecha de factura, país de envío, Total, ordenado de manera descendente por fecha de factura y limitado a 10 filas.
+    1) Generar un listado de todas las facturas del empleado 'Buchanan'.
+    2) Generar un listado con todos los campos de las facturas del correo 'Speedy Express'.
+    3) Generar un listado de todas las facturas con el nombre y apellido de los empleados.
+    4) Mostrar un listado de las facturas de todos los clientes “Owner” y país de envío “USA”.
+    5) Mostrar todos los campos de las facturas del empleado cuyo apellido sea “Leverling” o que incluyan el producto id = “42”.
+    6) Mostrar todos los campos de las facturas del empleado cuyo apellido sea “Leverling” y que incluya los producto id = “80” o ”42”.
+    7) Generar un listado con los cinco mejores clientes, según sus importes de compras total (PrecioUnitario * Cantidad).
+    8) Generar un listado de facturas, con los campos id, nombre y apellido del cliente, fecha de factura, país de envío, Total, ordenado de manera descendente por fecha de factura y limitado a 10 filas.
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
