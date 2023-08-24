@@ -37,9 +37,8 @@ El Diagrama entidad relación es como se muestra a continuación:
 
 ![](https://raw.githubusercontent.com/sgcm14/proyectos-sql/main/eMarket/eMarket.png)
 
------------------
 
-**Consultas queries ML - Parte I**
+## Consultas queries ML - Parte I
 
 Vamos a practicar sobre consultas SELECT, enfocándonos en SELECT,
 WHERE, operadores de condición como AND, OR, BETWEEN, LIKE, IN, entre
@@ -79,8 +78,8 @@ Tips:
     3. ¿El cliente 'GOURL' realizó algún pedido?
     4. Se quiere visualizar todas las facturas de los empleados 2, 3, 5, 8 y 9.
 
---------------------------------
-**Consultas queries ML - Parte II**
+
+## Consultas queries ML - Parte II
 
 En esta segunda parte vamos a intensificar la práctica de consultas
 SELECT, añadiendo ALIAS, LIMIT y OFFSET.
@@ -118,6 +117,50 @@ Te dejamos unos ejercicios extras a partir de la misma base:
     7. ¿Cuál es el ID de empleado de “Buchanan”?
     8. ¿Existen facturas con EmpleadoID del empleado del ejercicio anterior? (No relacionar, sino verificar que existan facturas).
 
+## Consultas queries XL parte I - GROUP BY
+Vamos a practicar sobre consultas SELECT, enfocándonos en group by, having y distinct.
+
+Tips:
+- Cada enunciado se corresponde con una consulta SELECT.
+- Recordá ir guardando las consultas. SQL.
+
+**Consignas:**
+
+    Clientes:
+    --------
+    1) ¿Cuántos clientes existen?
+    2) ¿Cuántos clientes hay por ciudad?
+
+    Facturas:
+    --------
+    1) ¿Cuál es el total de transporte?
+    2) ¿Cuál es el total de transporte por EnvioVia (empresa de envío)?
+    3) Calcular la cantidad de facturas por cliente. Ordenar descendentemente por cantidad de facturas.
+    4) Obtener el Top 5 de clientes de acuerdo a su cantidad de facturas.
+    5) ¿Cuál es el país de envío menos frecuente de acuerdo a la cantidad de facturas?
+    6) Se quiere otorgar un bono al empleado con más ventas. ¿Qué ID de empleado realizó más operaciones de ventas?
+
+    Factura detalle:
+    ---------------
+    1) ¿Cuál es el producto que aparece en más líneas de la tabla Factura Detalle?
+    2) ¿Cuál es el total facturado? Considerar que el total facturado es la suma de
+    cantidad por precio unitario.
+    3) ¿Cuál es el total facturado para los productos ID entre 30 y 50?
+    4) ¿Cuál es el precio unitario promedio de cada producto?
+    5) ¿Cuál es el precio unitario máximo?
+
+## Consultas queries XL parte II - JOIN
+
+En esta segunda parte vamos a intensificar la práctica de consultas con JOIN.
+
+1) Generar un listado de todas las facturas del empleado 'Buchanan'.
+2) Generar un listado con todos los campos de las facturas del correo 'Speedy Express'.
+3) Generar un listado de todas las facturas con el nombre y apellido de los empleados.
+4) Mostrar un listado de las facturas de todos los clientes “Owner” y país de envío “USA”.
+5) Mostrar todos los campos de las facturas del empleado cuyo apellido sea “Leverling” o que incluyan el producto id = “42”.
+6) Mostrar todos los campos de las facturas del empleado cuyo apellido sea “Leverling” y que incluya los producto id = “80” o ”42”.
+7) Generar un listado con los cinco mejores clientes, según sus importes de compras total (PrecioUnitario * Cantidad).
+8) Generar un listado de facturas, con los campos id, nombre y apellido del cliente, fecha de factura, país de envío, Total, ordenado de manera descendente por fecha de factura y limitado a 10 filas.
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
