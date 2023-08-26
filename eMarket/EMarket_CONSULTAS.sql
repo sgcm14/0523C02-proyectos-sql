@@ -152,19 +152,37 @@ WHERE EmpleadoID = (SELECT EmpleadoID FROM empleados WHERE Apellido = "Buchanan"
 /*Consultas queries XL parte I - GROUP BY
 Vamos a practicar sobre consultas SELECT, enfocándonos en group by, having y distinct.
  Clientes:*/
-
 /*1) ¿Cuántos clientes existen?*/
+SELECT COUNT(*)
+FROM clientes;
 
 /*2) ¿Cuántos clientes hay por ciudad?*/
+SELECT Ciudad, COUNT(*)
+FROM clientes
+GROUP BY Ciudad;
 
 /*Facturas:*/
 /*1) ¿Cuál es el total de transporte?*/
+SELECT SUM(Transporte)
+FROM facturas;
 
 /*2) ¿Cuál es el total de transporte por EnvioVia (empresa de envío)?*/
+SELECT  EnvioVia, SUM(Transporte)
+FROM facturas
+GROUP BY EnvioVia;
 
 /*3) Calcular la cantidad de facturas por cliente. Ordenar descendentemente por cantidad de facturas.*/
+SELECT ClienteID, COUNT(*) AS CantidadFacturas
+FROM facturas
+GROUP BY ClienteID
+ORDER BY CantidadFacturas DESC;
 
 /*4) Obtener el Top 5 de clientes de acuerdo a su cantidad de facturas.*/
+SELECT ClienteID, COUNT(*) AS CantidadFacturas
+FROM facturas
+GROUP BY ClienteID
+ORDER BY CantidadFacturas DESC
+LIMIT 5;
 
 /*5) ¿Cuál es el país de envío menos frecuente de acuerdo a la cantidad de facturas?*/
 
