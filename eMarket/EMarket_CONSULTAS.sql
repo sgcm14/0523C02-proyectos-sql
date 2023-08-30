@@ -1,4 +1,4 @@
-USE emarket
+USE emarket;
 /*Categorías y productos*/
 /*1. Queremos tener un listado de todas las categorías.*/
 SELECT * FROM categorias;
@@ -27,7 +27,7 @@ WHERE PrecioUnitario BETWEEN 10 AND 22;
 /*7. Se define que un producto hay que solicitarlo al proveedor si sus unidades
 en stock son menores al Nivel de Reorden. ¿Hay productos por solicitar?*/
 SELECT * FROM productos
-WHERE UnidadesStock < NivelReorden
+WHERE UnidadesStock < NivelReorden;
 
 /*8. Se quiere conocer todos los productos del listado anterior, pero que
 unidades pedidas sea igual a cero.*/
@@ -289,3 +289,77 @@ INNER JOIN facturadetalle ON facturas.facturaID = facturadetalle.facturaID
 GROUP BY facturas.FacturaID, clientes.Contacto, facturas.FechaFactura, facturas.PaisEnvio
 ORDER BY facturas.FechaFactura DESC
 LIMIT 10;
+
+/*
+Consultas queries XXL parte I - Repasamos INNER JOIN
+
+Realizar una consulta de la facturación de e-market. Incluir la siguiente información:
+- Id de la factura
+- fecha de la factura
+- nombre de la empresa de correo
+- nombre del cliente
+- categoría del producto vendido
+- nombre del producto
+- precio unitario
+- cantidad*/
+SELECT DISTINCT
+    f.FacturaID,
+    f.FechaFactura,
+    c.Compania AS NombreCompaniaCorreo,
+    cli.Compania AS NombreCliente,
+    cat.CategoriaNombre AS CategoriaProducto,
+    p.ProductoNombre AS NombreProducto,
+    fd.PrecioUnitario,
+    fd.Cantidad
+FROM facturas f
+INNER JOIN correos c ON f.EnvioVia = c.CorreoID
+INNER JOIN clientes cli ON f.ClienteID = cli.ClienteID
+INNER JOIN facturadetalle fd ON f.FacturaID = fd.FacturaID
+INNER JOIN productos p ON fd.ProductoID = p.ProductoID
+INNER JOIN categorias cat ON p.CategoriaID = cat.CategoriaID;
+
+/* Consultas queries XXL parte II - INNER, LEFT Y RIGHT JOIN
+
+1. Listar todas las categorías junto con información de sus productos. Incluir todas
+las categorías aunque no tengan productos.*/
+SELECT c.CategoriaNombre, p.*
+FROM categorias c
+LEFT JOIN productos p ON p.CategoriaID = c.CategoriaID
+ORDER BY c.CategoriaNombre;
+
+/*2. Listar la información de contacto de los clientes que no hayan comprado nunca
+en emarket.*/
+SELECT c.Compania, c.Contacto, c.Direccion, c.Telefono, f.FacturaID
+FROM clientes c
+LEFT JOIN facturas f ON c.ClienteID = f.ClienteID
+WHERE f.FacturaID IS NULL;
+
+/*3. Realizar un listado de productos. Para cada uno indicar su nombre, categoría, y
+la información de contacto de su proveedor. Tener en cuenta que puede haber
+productos para los cuales no se indicó quién es el proveedor.*/
+SELECT p.ProductoNombre, c.CategoriaNombre, pro.Compania, pro.Direccion, pro.Telefono
+FROM productos p
+INNER JOIN categorias c ON p.CategoriaID = c.CategoriaID
+LEFT JOIN proveedores pro ON p.ProveedorID = pro.ProveedorID;
+
+/*4. Para cada categoría listar el promedio del precio unitario de sus productos.*/
+SELECT c.CategoriaNombre, AVG(PrecioUnitario) AS Promedio
+FROM categorias c
+LEFT JOIN productos p ON c.CategoriaID = p.CategoriaID
+GROUP BY c.CategoriaNombre
+ORDER BY c.CategoriaNombre;
+
+/*5. Para cada cliente, indicar la última factura de compra. Incluir a los clientes que
+nunca hayan comprado en e-market.*/
+SELECT c.ClienteID, c.Compania, MAX(f.FechaFactura) AS Fecha
+FROM clientes c
+LEFT JOIN facturas f ON c.ClienteID = f.ClienteID
+GROUP BY  c.ClienteID, c.Compania;
+
+/*6. Todas las facturas tienen una empresa de correo asociada (enviovia). 
+Generar un listado con todas las empresas de correo, y la cantidad de facturas
+correspondientes. Realizar la consulta utilizando RIGHT JOIN.*/
+SELECT c.Compania, COUNT(f.FacturaID) AS Cantidad
+FROM correos c
+RIGHT JOIN facturas f ON c.CorreoID = f.EnvioVia
+GROUP BY c.Compania;

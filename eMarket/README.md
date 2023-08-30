@@ -162,6 +162,35 @@ En esta segunda parte vamos a intensificar la práctica de consultas con JOIN.
     7) Generar un listado con los cinco mejores clientes, según sus importes de compras total (PrecioUnitario * Cantidad).
     8) Generar un listado de facturas, con los campos id, nombre y apellido del cliente, fecha de factura, país de envío, Total, ordenado de manera descendente por fecha de factura y limitado a 10 filas.
 
+## Consultas queries XXL parte I - Repasamos INNER JOIN
+
+Realizar una consulta de la facturación de e-market. Incluir la siguiente información:
+- Id de la factura
+- fecha de la factura
+- nombre de la empresa de correo
+- nombre del cliente
+- categoría del producto vendido
+- nombre del producto
+- precio unitario
+- cantidad
+
+## Consultas queries XXL parte II - INNER, LEFT Y RIGHT JOIN
+
+1. Listar todas las categorías junto con información de sus productos. Incluir todas
+las categorías aunque no tengan productos.
+2. Listar la información de contacto de los clientes que no hayan comprado nunca
+en emarket.
+3. Realizar un listado de productos. Para cada uno indicar su nombre, categoría, y
+la información de contacto de su proveedor. Tener en cuenta que puede haber
+productos para los cuales no se indicó quién es el proveedor.
+4. Para cada categoría listar el promedio del precio unitario de sus productos.
+5. Para cada cliente, indicar la última factura de compra. Incluir a los clientes que
+nunca hayan comprado en e-market.
+6. Todas las facturas tienen una empresa de correo asociada (enviovia). Generar un
+listado con todas las empresas de correo, y la cantidad de facturas
+correspondientes. Realizar la consulta utilizando RIGHT JOIN.
+
+
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
 <img src ="https://raw.githubusercontent.com/sgcm14/sgcm14/main/sammy.jpg" width="200">
