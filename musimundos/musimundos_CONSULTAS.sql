@@ -60,3 +60,8 @@ Realizar una consulta sobre la tabla canciones con la siguiente información:
 - El primer compositor de la canción (notar que si hay más de uno, estos 
 se separan por coma)
 */
+SELECT UPPER(LEFT(nombre, 10)) AS nombre_abreviado,  
+FLOOR(bytes / 1024) AS peso_KBytes,
+CONCAT('$', FORMAT(precio_unitario, 3)) AS precio_formateado,
+SUBSTRING_INDEX(compositor, ',', 1) AS primer_compositor
+FROM canciones;
