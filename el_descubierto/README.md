@@ -127,6 +127,63 @@ sucursales que hayan realizado más de un préstamo el mismo día?
     - Debajo de cada consulta SQL, se debe escribir de forma comentada el
     número de la cantidad de registros que devuelve.
 
+## Checkpoint #3
+
+Nos encontramos en el tercer punto de encuentro dentro del proyecto integrador.
+Nos reunimos nuevamente con la institución y junto con ellos acordamos ciertos requerimiento sobre los reportes. En el caso de que necesitemos la base de datos, la podemos descargar desde aquí.
+
+**Enunciado**
+
+La institución bancaria EL DESCUBIERTO, nos pidió una tercera
+reunión. Para este hito, se nos solicita presentar una serie de reportes
+sobre los datos almacenados en la base de datos que hemos
+construido. En base a lo solicitado, vamos a trabajar en la producción de
+los siguientes reportes.
+
+**Consigna - CheckPoint III**
+1. Listar todos los clientes que tengan tres o más cuentas bancarias. Mostrar el número de cliente, apellido y nombre separado por un espacio dentro de una misma columna denominada "Cliente" y, la cantidad de cuentas que posee.
+2. Listar todos los clientes que no tengan una cuenta bancaria. Mostrar el número de cliente, apellido y nombre en mayúsculas dentro de una misma columna denominada "Cliente sin cuenta bancaria".
+3. Listar todos los clientes que tengan al menos un préstamo que corresponda a la sucursal de la ciudad de "Pilar - Buenos Aires". Se debe mostrar el número de cliente, apellido, nombre, número de préstamo, número de sucursal, nombre de la ciudad y país de dicha sucursal.
+4. Listar los clientes que tengan una o más cajas de ahorro y que en la segunda letra de su apellido contenga una "e".
+5. Listar absolutamente todos los países y la cantidad de clientes que tengan.
+6. Calcular el importe total y la cantidad de préstamos otorgados en el mes de agosto por cada cliente. Mostrar el número de cliente, importe total y cantidad de préstamos.
+7. Calcular el importe total y la cantidad de cuotas pagadas para el préstamo número cuarenta.
+8. Determinar el importe restante que falta por pagar para el préstamo número 45.
+9. Listar los préstamos de la sucursal número cuatro. Mostrar el número de cliente, apellido, nombre y el número de préstamo.
+10. Reportar el número del préstamo y la cantidad de cuotas pagadas por cada uno préstamo. Se debe formatear el dato de la cantidad de cuotas pagadas, por ejemplo, si se ha pagado una cuota, sería "1 cuota paga"; si se han pagado dos o más cuotas, sería en plural "2 cuotas pagas" y "Ninguna cuota paga" para los préstamos que aún no han recibido un pago.
+11. Listar absolutamente todos los empleados y las cuentas bancarias que tengan asociada. Mostrar en una sola columna el apellido y la letra inicial del nombre del empleado (Ej. Tello Aguilera C.), en otra columna, el número de cuenta y el tipo (Ej. 10560 - CAJA DE AHORRO). Los campos nulos deben figurar con la leyenda "-Sin asignación-".
+12. Reportar todos los datos de los clientes y los números de cuenta que tienen.
+13. Listar los clientes con residencia en las ciudades de "Las Heras - Mendoza", "Viña del Mar - Valparaíso", "Córdoba - Córdoba" y "Monroe - Buenos Aires". Se debe mostrar el apellido, nombre del cliente y todos los datos referidos a la ciudad
+14. Listar los clientes que tienen préstamos otorgados entre 15/08/21 al 5/09/21 (ordenarlos por fecha de otorgamiento). Mostrar sólo el email del cliente, teléfono móvil y todos los datos referidos al préstamo.
+15. Listar de manera ordenada, los empleados que no pertenezcan a la sucursal de la ciudad "Monroe - Buenos Aires" y que la fecha de alta del contrato se halle dentro del rango 2016 al 2018. Mostrar el email del empleado, número de sucursal y el nombre de la ciudad
+16. Listar las cuentas bancarias que tienen dos titulares. Mostrar sólo el número de cuenta y la cantidad de titulares
+17. Se desea conocer el segundo pago con mayor importe efectuado en las
+sucursales de Chile. Mostrar el número y hora de pago, importe pagado y el
+nombre del país.
+18. Listar los clientes que no tienen préstamos. Mostrar el apellido, nombre y email del cliente.
+19. Se desea conocer el mes y año en que se terminaría de pagar el préstamo número treinta a partir de la fecha de otorgamiento. Se debe mostrar el email del cliente, número de préstamo, fecha de otorgamiento, importe prestado, mes y año que correspondería a la última cuota (Ej. "agosto de 2021").
+20. Listar las ciudades (sin repetir) que tengan entre dos a cuatro cuentas bancarias.
+Se debe mostrar el país, ciudad y la cantidad de cuentas. Además, se debe
+ordenar por país y ciudad.
+21. Mostrar el nombre, apellido, número de cuenta de todos los clientes que poseen una cuenta tipo "CAJA DE AHORRO", cuyo saldo es mayor que $ 15000
+22. Por cada sucursal, contar la cantidad de clientes y el saldo promedio de sus cuentas.
+23. Listar todos aquellos clientes que teniendo un saldo negativo en la cuenta, tengan un descubierto otorgado mayor a cero. Mostrar el apellido, nombre, saldo y descubierto otorgado.
+24. Se desea conocer el último acceso de cada cliente al sistema. Mostrar el nombre, apellido y última fecha de acceso.
+25. Listar el apellido y nombre de todos los empleados del banco. Si poseen cuentas a cargo, mostrar cuántas. Ordenar por apellido y nombre.
+
+-----------------------
+
+**Se solicita**
+
+- Generar una consulta SQL por cada uno de los puntos de la consigna.
+- Armar un solo documento (.sql) que contenga todos los puntos de la consigna y
+las correspondientes consultas SQL. El mismo deberá:
+    - Tener como nombre de archivo: CheckPointIII_Numero_Grupo
+    - En el inicio de la primera hoja del documento deberá incluir el código de
+    la camada, número de grupo y los nombres de todos los integrantes.
+    - Debajo de cada consulta SQL, se debe escribir de forma comentada el
+    número de la cantidad de registros que devuelve.
+
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
 <img src ="https://raw.githubusercontent.com/sgcm14/sgcm14/main/sammy.jpg" width="200">

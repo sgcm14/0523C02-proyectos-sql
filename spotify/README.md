@@ -121,6 +121,15 @@ un género
 18. Generar un reporte por usuario , listando las suscripciones que tiene o tuvo, el importe que abonó y los datos de las formas de pago con que
 lo realizó.
 
+## Realizar los siguientes informes:
+1. Mostrar la cantidad de canciones que pertenecen a ambos géneros pop y rock cuyo nombre contiene la letra “m”.
+2. Listar todas las canciones que pertenezcan a más de una playlist. Incluir en el
+listado el nombre de la canción, el código y a cuántas playlists pertenecen.
+3. Generar un reporte con el nombre del artista y el nombre de la canción que no pertenecen a ninguna lista, ordenados alfabéticamente por el nombre del artista.
+4. Modificar el país de todos los usuarios con el código postal “7600” a “Argentina”.
+5. Listar todos los álbumes que tengan alguna canción que posea más de un género.
+6. Crear un índice agrupado para las canciones cuyo identificador sea el ID.
+
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 

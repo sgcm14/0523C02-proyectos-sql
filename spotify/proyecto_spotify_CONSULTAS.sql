@@ -308,3 +308,64 @@ INNER JOIN tipousuario t ON u.IdTipoUsuario = t.IdTipoUsuario
 INNER JOIN pagos p ON s.idpagos = p.idPagos
 GROUP BY u.nombreusuario, t.TipoUsuario;
 
+/*1. Mostrar la cantidad de canciones que pertenecen a ambos géneros pop y rock
+cuyo nombre contiene la letra “m”.*/
+SELECT COUNT(*)
+FROM cancion c
+INNER JOIN generoxcancion gc ON c.idCancion = gc.IdCancion
+INNER JOIN genero g ON gc.IdGenero  = g.idGenero
+WHERE titulo LIKE "%m%" AND (Genero = "Rock" OR Genero = "Pop");
+
+/*2. Listar todas las canciones que pertenezcan a más de una playlist. Incluir en el
+listado el nombre de la canción, el código y a cuántas playlists pertenecen.*/
+SELECT titulo, c.idCancion, COUNT(p.IdPlaylist) AS CantidadPlaylists
+FROM cancion c
+INNER JOIN playlistxcancion p ON c.idCancion = p.Idcancion
+GROUP BY titulo, c.idCancion
+HAVING CantidadPlaylists > 1;
+
+/*3. Generar un reporte con el nombre del artista y el nombre de la canción que no
+pertenecen a ninguna lista, ordenados alfabéticamente por el nombre del
+artista.*/
+SELECT a.Nombre, c.titulo
+FROM artista a
+INNER JOIN album al ON a.IdArtista = al.IdArtista
+INNER JOIN cancion c ON al.IdAlbum = c.IdAlbum
+LEFT JOIN (
+    SELECT DISTINCT IdCancion
+    FROM playlistxcancion
+    WHERE IdCancion IS NOT NULL
+) p ON c.IdCancion = p.IdCancion
+WHERE p.IdCancion IS NULL
+ORDER BY a.Nombre;
+
+/*4. Modificar el país de todos los usuarios con el código postal “7600” a “Argentina”.*/
+-- crea una tabla temporal que almacene los IDs de los usuarios que cumplen con la condición del código postal "7600":
+CREATE TEMPORARY TABLE TempUsersToUpdate AS
+SELECT idUsuario
+FROM usuario
+WHERE CP = '7600';
+
+ -- Luego, realiza la actualización utilizando la tabla temporal:
+UPDATE usuario AS u
+JOIN TempUsersToUpdate AS t ON u.idUsuario = t.idUsuario
+SET u.Pais_idPais = (SELECT idPais FROM Pais WHERE Pais = 'Argentina');
+
+--  elimina la tabla temporal
+DROP TEMPORARY TABLE IF EXISTS TempUsersToUpdate;
+
+/*5. Listar todos los álbumes que tengan alguna canción que posea más de un
+género.*/
+SELECT a.idAlbum, a.titulo AS nombre_album
+FROM album a
+INNER JOIN cancion c ON a.idAlbum = c.idAlbum
+INNER JOIN generoxcancion gc ON c.idCancion = gc.idCancion
+INNER JOIN genero g ON gc.idGenero = g.idGenero
+GROUP BY a.idAlbum, a.titulo
+HAVING COUNT(DISTINCT g.idGenero) > 1;
+
+
+/*6. Crear un índice agrupado para las canciones cuyo identificador sea el ID.*/
+-- Crear el índice agrupado (PRIMARY KEY)
+ALTER TABLE cancion
+ADD PRIMARY KEY (idCancion);
