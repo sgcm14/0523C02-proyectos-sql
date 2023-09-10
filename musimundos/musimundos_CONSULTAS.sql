@@ -65,3 +65,76 @@ FLOOR(bytes / 1024) AS peso_KBytes,
 CONCAT('$', FORMAT(precio_unitario, 3)) AS precio_formateado,
 SUBSTRING_INDEX(compositor, ',', 1) AS primer_compositor
 FROM canciones;
+
+/*Stored Procedure
+SP: Clientes por País y Ciudad
+Tabla: Clientes
+1. Crear un stored procedure que solicite como parámetros de entrada el
+nombre de un país y una ciudad, y que devuelva como resultado la
+información de contacto de todos los clientes de ese país y ciudad.
+En el caso que el parámetro de ciudad esté vacío, se debe devolver todos los clientes del país indicado.*/
+DELIMITER $$
+CREATE PROCEDURE GetClientesPorPaisYCiudad(IN pais_param VARCHAR(255), IN ciudad_param VARCHAR(255))
+BEGIN
+    -- Verificar si el parámetro de ciudad está vacío
+    IF ciudad_param = '' THEN
+        -- Si la ciudad está vacía, obtener todos los clientes del país
+        SELECT * FROM Clientes WHERE pais = pais_param;
+    ELSE
+        -- Si se proporciona una ciudad, obtener los clientes del país y ciudad especificados
+        SELECT * FROM Clientes WHERE pais = pais_param AND ciudad = ciudad_param;
+    END IF;
+END $$
+
+/*2. Invocar el procedimiento para obtener la información de los clientes de
+Brasilia en Brazil.*/
+CALL GetClientesPorPaisYCiudad('Brazil', 'Brasília');
+
+/*3. Invocar el procedimiento para obtener la información de todos los clientes de Brazil.*/
+CALL GetClientesPorPaisYCiudad('Brazil', '');
+
+/*SP: Géneros musicales
+Tabla: Generos
+1. Crear un stored procedure que reciba como parámetro un nombre de
+género musical y lo inserte en la tabla de géneros.
+Además, el stored procedure debe devolver el id de género que se insertó.
+TIP! Para calcular el nuevo id incluir la siguiente línea dentro del bloque 
+de código del SP: SET nuevoid = (SELECT MAX(id) FROM generos) + 1;*/
+DELIMITER $$
+CREATE PROCEDURE InsertarGenero(IN nombreGenero VARCHAR(255), OUT nuevoId INT)
+BEGIN
+    DECLARE nuevoid INT;
+    
+    -- Calcular el nuevo ID
+    SET nuevoid = (SELECT MAX(id) FROM Generos) + 1;
+    
+    -- Insertar el nuevo género
+    INSERT INTO Generos (id, nombre) VALUES (nuevoid, nombreGenero);
+    
+    -- Devolver el nuevo ID
+    SET nuevoId = nuevoid;
+END $$
+
+/*2. Invocar el stored procedure creado para insertar el género Funk. ¿Qué id devolvió el 
+SP ? Consultar la tabla de géneros para ver los cambios.*/
+-- Declarar una variable para almacenar el ID devuelto por el SP
+SET @idFunk = NULL;
+
+-- Invocar el SP para insertar "Funk"
+CALL InsertarGenero('Funk', @idFunk);
+
+-- Mostrar el ID devuelto por el SP
+SELECT @idFunk;
+
+SELECT * FROM generos;
+
+
+/*3. Repetir el paso anterior insertando esta vez el género Tango.*/
+-- Declarar una variable para almacenar el ID devuelto por el SP
+SET @idTango = NULL;
+
+-- Invocar el SP para insertar "Tango"
+CALL InsertarGenero('Tango', @idTango);
+
+-- Mostrar el ID devuelto por el SP
+SELECT @idTango;
