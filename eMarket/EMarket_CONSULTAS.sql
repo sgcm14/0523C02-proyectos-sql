@@ -477,3 +477,89 @@ SELECT
 FROM PrioridadProductos
 GROUP BY PRIORIDAD
 HAVING COUNT(*) >= 5;
+
+/*
+Stored procedures:
+-----------------
+1) Empleados
+  a) Crear un SP que liste los apellidos y nombres de los empleados ordenados alfabéticamente.
+*/
+DELIMITER $$
+CREATE PROCEDURE ListarEmpleadosAlfabeticamente()
+BEGIN
+    SELECT Apellido, Nombre
+    FROM empleados
+    ORDER BY Apellido;
+END $$
+
+/* b) Invocar el SP para verificar el resultado.*/
+CALL ListarEmpleadosAlfabeticamente();
+
+/*2) Empleados por ciudad
+  a) Crear un SP que reciba el nombre de una ciudad y liste los empleados de esa ciudad.
+*/
+DELIMITER $$
+CREATE PROCEDURE ListarEmpleadosByCity(IN ciudad_param VARCHAR(255))
+BEGIN
+    SELECT Apellido, Nombre
+    FROM empleados
+    WHERE Ciudad = ciudad_param;
+END $$
+
+/*b) Invocar al SP para listar los empleados de Seattle.*/
+CALL ListarEmpleadosByCity('London');
+
+/*3) Clientes por país
+  a) Crear un SP que reciba el nombre de un país y devuelva la cantidad de clientes en ese país.
+*/
+DELIMITER $$
+CREATE PROCEDURE CountEmpleadosByCountry(IN country_param VARCHAR(255))
+BEGIN
+    SELECT COUNT(*)
+    FROM empleados
+    WHERE Pais = country_param;
+END $$
+
+/*b) Invocar el SP para consultar la cantidad de clientes en Portugal.*/
+CALL CountEmpleadosByCountry('USA');
+
+/*4) Productos sin stock
+  a) Crear un SP que reciba un número y liste los productos cuyo stock está por debajo de ese número. 
+  El resultado debe mostrar el nombre del producto, el stock actual y el nombre de la categoría a la que pertenece el producto.
+*/
+DELIMITER $$
+CREATE PROCEDURE ProductsByStock(IN stock_param INT)
+BEGIN
+	SELECT ProductoNombre, UnidadesStock, CategoriaNombre
+	FROM productos p
+	INNER JOIN categorias c
+	ON p.CategoriaID = c.CategoriaID
+	WHERE UnidadesStock <= stock_param;
+END $$
+
+/*b) Listar los productos con menos de 10 unidades en stock.*/
+CALL ProductsByStock(10);
+
+/*c) Listar los productos sin stock.*/
+CALL ProductsByStock(0);
+
+/*5) Ventas con descuento
+  a) Crear un SP que reciba un porcentaje y liste los nombres de los productos que hayan sido vendidos con un descuento igual o 
+  superior al valor indicado, indicando además el nombre del cliente al que se lo vendió.
+*/
+DELIMITER $$
+CREATE PROCEDURE ListarProductosConDescuento(IN PorcentajeDescuento DECIMAL(10,2))
+BEGIN
+	SELECT  p.ProductoNombre, fd.Descuento, c.Contacto
+	FROM productos p
+	INNER JOIN facturadetalle fd
+	ON p.ProductoID  = fd.ProductoID
+	INNER JOIN facturas f
+	ON fd.FacturaID = f.FacturaID
+	INNER JOIN clientes c
+	ON f.ClienteID = c.ClienteID
+	WHERE fd.Descuento >=  PorcentajeDescuento;
+END $$
+
+/* b) Listar la información de los productos que hayan sido vendidos con un descuento mayor al 10%.*/
+CALL ListarProductosConDescuento(0.1);
